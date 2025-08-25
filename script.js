@@ -43,22 +43,33 @@ function playRound(human, computer){
     }else if (human === "paper" && computer == "rock"){
         console.log("Human Wins!");
         humanScore++;
+    }else if (computer === human){
+        console.log("Tie!");
     }else{
         console.log("Undefined");
     }
 }
 
-  //putting the functions in a variables in order to later pass them as
-  // arguments for the playRound function logic
-  const humanSelection = getHumanChoice();
-  const computerSelection = getComputerChoice();
+// add a function named playGame
+function playGame(){
+    // make a for loop to count up for i<5
+    for (i = 0; i < 3; i++){
+        // add the funtions inside the loop
+        const newCompSelection = getComputerChoice();
+        const newHumanSelection = getHumanChoice();
+        playRound(newHumanSelection, newCompSelection);
 
-//   loggig the human and computer selection in the console
-  console.log(computerSelection);
-  console.log(humanSelection);
+        // loggig the human and computer selection in the console
+        console.log(newCompSelection);
+        console.log(newHumanSelection); 
+    }
+}
 
-  // calling the playRound function and passing the variabels containing functions
-  playRound(humanSelection, computerSelection);
 
+
+ 
+   playGame();
   // logging updated scores in the console
   console.log(humanScore, computerScore);
+
+// add console message for final score and winner
