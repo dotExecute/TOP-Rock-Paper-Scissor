@@ -17,34 +17,41 @@ function getComputerChoice() {
 }
 
 // get human choice and store it
-function getHumanChoice() {
-  let humanChoice = prompt("What's your Choice?");
+// function getHumanChoice() {
+//   let humanChoice = prompt("What's your Choice?");
 
-  // returning the choice
-  return humanChoice;
-}
+//   // returning the choice
+//   return humanChoice;
+// }
 
 // logic for a single round, just a bunch of if else statements
 function playRound(human, computer) {
   if (computer === "rock" && human === "scissor") {
+    console.log(computer);
     console.log("Computer Wins!");
     computerScore++;
   } else if (computer === "scissor" && human == "paper") {
+    console.log(computer);
     console.log("Computer Wins!");
     computerScore++;
   } else if (computer === "paper" && human == "rock") {
+    console.log(computer);
     console.log("Computer Wins!");
     computerScore++;
   } else if (human === "rock" && computer === "scissor") {
+    console.log(computer);
     console.log("Human Wins!");
     humanScore++;
   } else if (human === "scissor" && computer == "paper") {
+    console.log(computer);
     console.log("Human Wins!");
     humanScore++;
   } else if (human === "paper" && computer == "rock") {
+    console.log(computer);
     console.log("Human Wins!");
     humanScore++;
   } else if (computer === human) {
+    console.log(computer);
     console.log("Tie!");
   } else {
     console.log("Undefined");
@@ -52,19 +59,19 @@ function playRound(human, computer) {
 }
 
 // add a function named playGame
-function playGame() {
-  // make a for loop to count up for i<5
-  for (i = 0; i < 3; i++) {
-    // add the funtions inside the loop
-    const newCompSelection = getComputerChoice();
-    const newHumanSelection = getHumanChoice();
-    playRound(newHumanSelection, newCompSelection);
+// function playGame() {
+//   // make a for loop to count up for i<5
+//   for (i = 0; i < 3; i++) {
+//     // add the funtions inside the loop
+//     const newCompSelection = getComputerChoice();
+//     const newHumanSelection = getHumanChoice();
+//     playRound(newHumanSelection, newCompSelection);
 
-    // loggig the human and computer selection in the console
-    console.log(newCompSelection);
-    console.log(newHumanSelection);
-  }
-}
+//     // loggig the human and computer selection in the console
+//     console.log(newCompSelection);
+//     console.log(newHumanSelection);
+//   }
+// }
 
 // playGame();
 
@@ -79,7 +86,35 @@ function finalScore(finalHumanScore, finalComputerScore) {
   }
 }
 
-finalScore(humanScore, computerScore);
+// finalScore(humanScore, computerScore);
 // logging updated scores in the console
-console.log(humanScore, computerScore);
+// console.log(humanScore, computerScore);
 
+// UI with DOM manipulation
+const body = document.querySelector("body");
+const rockBtn = document.createElement("button");
+rockBtn.classList.add("rock");
+const paperBtn = document.createElement("button");
+paperBtn.classList.add("paper");
+const scissorBtn = document.createElement("button");
+scissorBtn.classList.add("scissor");
+
+rockBtn.textContent = "rock";
+paperBtn.textContent = "paper";
+scissorBtn.textContent = "scissor";
+
+// on button click get player selection, comp selection, play round
+rockBtn.addEventListener("click", () => {
+  playRound("rock", getComputerChoice());
+});
+paperBtn.addEventListener("click", () => {
+  playRound("paper", getComputerChoice());
+});
+scissorBtn.addEventListener("click", () => {
+  playRound("scissor", getComputerChoice());
+});
+
+//add new things to DOM
+body.appendChild(rockBtn);
+body.appendChild(paperBtn);
+body.appendChild(scissorBtn);
