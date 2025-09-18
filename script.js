@@ -28,33 +28,33 @@ function getComputerChoice() {
 function playRound(human, computer) {
   if (computer === "rock" && human === "scissor") {
     console.log(computer);
-    console.log("Computer Wins!");
+    winBannerDiv.textContent = "Computer Wins!";
     computerScore++;
   } else if (computer === "scissor" && human == "paper") {
     console.log(computer);
-    console.log("Computer Wins!");
+    winBannerDiv.textContent = "Computer Wins!";
     computerScore++;
   } else if (computer === "paper" && human == "rock") {
     console.log(computer);
-    console.log("Computer Wins!");
+    winBannerDiv.textContent = "Computer Wins!";
     computerScore++;
   } else if (human === "rock" && computer === "scissor") {
     console.log(computer);
-    console.log("Human Wins!");
+    winBannerDiv.textContent = "Human Wins!";
     humanScore++;
   } else if (human === "scissor" && computer == "paper") {
     console.log(computer);
-    console.log("Human Wins!");
+    winBannerDiv.textContent = "Human Wins!";
     humanScore++;
   } else if (human === "paper" && computer == "rock") {
     console.log(computer);
-    console.log("Human Wins!");
+    winBannerDiv.textContent = "Human Wins!";
     humanScore++;
   } else if (computer === human) {
     console.log(computer);
-    console.log("Tie!");
+    winBannerDiv.textContent = "It's a Tie!";
   } else {
-    console.log("Undefined");
+    winBannerDiv.textContent = "Undefined";
   }
 }
 
@@ -91,6 +91,8 @@ function finalScore(finalHumanScore, finalComputerScore) {
 // console.log(humanScore, computerScore);
 
 // UI with DOM manipulation
+
+// 3 buttons and OnClick functionality
 const body = document.querySelector("body");
 const rockBtn = document.createElement("button");
 rockBtn.classList.add("rock");
@@ -114,7 +116,12 @@ scissorBtn.addEventListener("click", () => {
   playRound("scissor", getComputerChoice());
 });
 
+//displaying winner
+const winBannerDiv = document.createElement("div");
+winBannerDiv.textContent = "";
+
 //add new things to DOM
 body.appendChild(rockBtn);
 body.appendChild(paperBtn);
 body.appendChild(scissorBtn);
+body.appendChild(scoreDiv);
