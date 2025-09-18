@@ -1,3 +1,4 @@
+//gameplay logic
 let humanScore = 0;
 let computerScore = 0;
 
@@ -65,7 +66,7 @@ function playGame() {
   }
 }
 
-playGame();
+// playGame();
 
 // add function to check final scores
 function finalScore(finalHumanScore, finalComputerScore) {
@@ -81,3 +82,4 @@ function finalScore(finalHumanScore, finalComputerScore) {
 finalScore(humanScore, computerScore);
 // logging updated scores in the console
 console.log(humanScore, computerScore);
+
