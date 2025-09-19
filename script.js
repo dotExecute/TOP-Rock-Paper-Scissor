@@ -16,45 +16,30 @@ function getComputerChoice() {
   }
 }
 
-// get human choice and store it
-// function getHumanChoice() {
-//   let humanChoice = prompt("What's your Choice?");
-
-//   // returning the choice
-//   return humanChoice;
-// }
-
 // logic for a single round, just a bunch of if else statements
 function playRound(human, computer) {
   if (computer === "rock" && human === "scissor") {
-    console.log(computer);
-    winBannerDiv.textContent = "Computer Wins!";
+    roundWinDiv.textContent = "Computer Wins!";
     computerScore++;
   } else if (computer === "scissor" && human == "paper") {
-    console.log(computer);
-    winBannerDiv.textContent = "Computer Wins!";
+    roundWinDiv.textContent = "Computer Wins!";
     computerScore++;
   } else if (computer === "paper" && human == "rock") {
-    console.log(computer);
-    winBannerDiv.textContent = "Computer Wins!";
+    roundWinDiv.textContent = "Computer Wins!";
     computerScore++;
   } else if (human === "rock" && computer === "scissor") {
-    console.log(computer);
-    winBannerDiv.textContent = "Human Wins!";
+    roundWinDiv.textContent = "Human Wins!";
     humanScore++;
   } else if (human === "scissor" && computer == "paper") {
-    console.log(computer);
-    winBannerDiv.textContent = "Human Wins!";
+    roundWinDiv.textContent = "Human Wins!";
     humanScore++;
   } else if (human === "paper" && computer == "rock") {
-    console.log(computer);
-    winBannerDiv.textContent = "Human Wins!";
+    roundWinDiv.textContent = "Human Wins!";
     humanScore++;
   } else if (computer === human) {
-    console.log(computer);
-    winBannerDiv.textContent = "It's a Tie!";
+    roundWinDiv.textContent = "It's a Tie!";
   } else {
-    winBannerDiv.textContent = "Undefined";
+    roundWinDiv.textContent = "Undefined";
   }
 }
 
@@ -108,20 +93,35 @@ scissorBtn.textContent = "scissor";
 // on button click get player selection, comp selection, play round
 rockBtn.addEventListener("click", () => {
   playRound("rock", getComputerChoice());
+  currHumanScoreDiv.textContent = humanScore;
+  currCompScoreDiv.textContent = computerScore;
 });
 paperBtn.addEventListener("click", () => {
   playRound("paper", getComputerChoice());
+  currHumanScoreDiv.textContent = humanScore;
+  currCompScoreDiv.textContent = computerScore;
 });
 scissorBtn.addEventListener("click", () => {
   playRound("scissor", getComputerChoice());
+  currHumanScoreDiv.textContent = humanScore;
+  currCompScoreDiv.textContent = computerScore;
 });
 
-//displaying winner
-const winBannerDiv = document.createElement("div");
-winBannerDiv.textContent = "";
+//displaying winner 
+const roundWinDiv = document.createElement("div");
+roundWinDiv.textContent = "";
+
+// displaying score counter
+const currHumanScoreDiv = document.createElement("div");
+currHumanScoreDiv.textContent = "";
+
+const currCompScoreDiv = document.createElement("div");
+currCompScoreDiv.textContent = "";
 
 //add new things to DOM
 body.appendChild(rockBtn);
 body.appendChild(paperBtn);
 body.appendChild(scissorBtn);
-body.appendChild(scoreDiv);
+body.appendChild(roundWinDiv);
+body.appendChild(currHumanScoreDiv);
+body.appendChild(currCompScoreDiv);
