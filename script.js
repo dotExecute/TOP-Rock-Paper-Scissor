@@ -43,48 +43,25 @@ function playRound(human, computer) {
   }
 }
 
-// add a function named playGame
-// function playGame() {
-//   // make a for loop to count up for i<5
-//   for (i = 0; i < 3; i++) {
-//     // add the funtions inside the loop
-//     const newCompSelection = getComputerChoice();
-//     const newHumanSelection = getHumanChoice();
-//     playRound(newHumanSelection, newCompSelection);
-
-//     // loggig the human and computer selection in the console
-//     console.log(newCompSelection);
-//     console.log(newHumanSelection);
-//   }
-// }
-
-// playGame();
-
 // add function to check final scores
 function finalScore(finalHumanScore, finalComputerScore) {
   if (humanScore > computerScore) {
-    console.log(
-      "No! No more games. Finish him off. Finish him now! Gollum, Gollum!"
-    );
+    finalScoreDiv.textContent =
+      "No! No more games. Finish him off. Finish him now! Gollum, Gollum!";
   } else {
-    console.log("Bagginses lost, now we eats it whole.");
+    finalScoreDiv.textContent = "Bagginses lost, now we eats it whole.";
   }
 }
-
-// finalScore(humanScore, computerScore);
-// logging updated scores in the console
-// console.log(humanScore, computerScore);
 
 // UI with DOM manipulation
 
 // 3 buttons and OnClick functionality
 const body = document.querySelector("body");
 const rockBtn = document.createElement("button");
-rockBtn.classList.add("rock");
 const paperBtn = document.createElement("button");
-paperBtn.classList.add("paper");
 const scissorBtn = document.createElement("button");
-scissorBtn.classList.add("scissor");
+let btnClckForTimes = 0;
+const totalRounds = 5;
 
 rockBtn.textContent = "rock";
 paperBtn.textContent = "paper";
@@ -92,22 +69,37 @@ scissorBtn.textContent = "scissor";
 
 // on button click get player selection, comp selection, play round
 rockBtn.addEventListener("click", () => {
-  playRound("rock", getComputerChoice());
-  currHumanScoreDiv.textContent = humanScore;
-  currCompScoreDiv.textContent = computerScore;
+  if (btnClckForTimes < totalRounds) {
+    playRound("rock", getComputerChoice());
+    currHumanScoreDiv.textContent = humanScore;
+    currCompScoreDiv.textContent = computerScore;
+    btnClckForTimes++;
+  }else if (btnClckForTimes === totalRounds){
+    finalScore(humanScore, computerScore);
+  }
 });
 paperBtn.addEventListener("click", () => {
-  playRound("paper", getComputerChoice());
-  currHumanScoreDiv.textContent = humanScore;
-  currCompScoreDiv.textContent = computerScore;
+  if (btnClckForTimes < totalRounds) {
+    playRound("paper", getComputerChoice());
+    currHumanScoreDiv.textContent = humanScore;
+    currCompScoreDiv.textContent = computerScore;
+    btnClckForTimes++;
+  }else if (btnClckForTimes === totalRounds){
+    finalScore(humanScore, computerScore);
+  }
 });
 scissorBtn.addEventListener("click", () => {
-  playRound("scissor", getComputerChoice());
-  currHumanScoreDiv.textContent = humanScore;
-  currCompScoreDiv.textContent = computerScore;
+  if (btnClckForTimes < totalRounds) {
+    playRound("scissor", getComputerChoice());
+    currHumanScoreDiv.textContent = humanScore;
+    currCompScoreDiv.textContent = computerScore;
+    btnClckForTimes++;
+  }else if (btnClckForTimes === totalRounds){
+    finalScore(humanScore, computerScore);
+  }
 });
 
-//displaying winner 
+//displaying winner
 const roundWinDiv = document.createElement("div");
 roundWinDiv.textContent = "";
 
@@ -118,6 +110,10 @@ currHumanScoreDiv.textContent = "";
 const currCompScoreDiv = document.createElement("div");
 currCompScoreDiv.textContent = "";
 
+// playing game for 5 rounds, displaying final score
+const finalScoreDiv = document.createElement("div");
+finalScoreDiv.textContent = "";
+
 //add new things to DOM
 body.appendChild(rockBtn);
 body.appendChild(paperBtn);
@@ -125,3 +121,4 @@ body.appendChild(scissorBtn);
 body.appendChild(roundWinDiv);
 body.appendChild(currHumanScoreDiv);
 body.appendChild(currCompScoreDiv);
+body.appendChild(finalScoreDiv);
