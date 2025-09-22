@@ -46,10 +46,10 @@ function playRound(human, computer) {
 // add function to check final scores
 function finalScore(finalHumanScore, finalComputerScore) {
   if (humanScore > computerScore) {
-    finalScoreDiv.textContent =
-      "No! No more games. Finish him off. Finish him now! Gollum, Gollum!";
+    humanWinModal.showModal();
   } else {
-    finalScoreDiv.textContent = "Bagginses lost, now we eats it whole.";
+    compWinModal.showModal();
+    startCountdown();
   }
 }
 
@@ -60,7 +60,13 @@ const body = document.querySelector("body");
 const rockBtn = document.createElement("button");
 const paperBtn = document.createElement("button");
 const scissorBtn = document.createElement("button");
+const humanWinModal = document.querySelector("#humanWin");
+const compWinModal = document.querySelector("#compWin");
+const replaylbtn = document.querySelector("#replaybtn");
+const countdownElement = document.querySelector("#waitForSec"); //html timer element
 let btnClckForTimes = 0;
+let timeLeft = 5; // timer count for comp win condition
+let timerFunc = null;
 const totalRounds = 5;
 
 rockBtn.textContent = "rock";
@@ -74,7 +80,7 @@ rockBtn.addEventListener("click", () => {
     currHumanScoreDiv.textContent = humanScore;
     currCompScoreDiv.textContent = computerScore;
     btnClckForTimes++;
-  }else if (btnClckForTimes === totalRounds){
+  } else if (btnClckForTimes === totalRounds) {
     finalScore(humanScore, computerScore);
   }
 });
@@ -84,7 +90,7 @@ paperBtn.addEventListener("click", () => {
     currHumanScoreDiv.textContent = humanScore;
     currCompScoreDiv.textContent = computerScore;
     btnClckForTimes++;
-  }else if (btnClckForTimes === totalRounds){
+  } else if (btnClckForTimes === totalRounds) {
     finalScore(humanScore, computerScore);
   }
 });
@@ -94,10 +100,33 @@ scissorBtn.addEventListener("click", () => {
     currHumanScoreDiv.textContent = humanScore;
     currCompScoreDiv.textContent = computerScore;
     btnClckForTimes++;
-  }else if (btnClckForTimes === totalRounds){
+  } else if (btnClckForTimes === totalRounds) {
     finalScore(humanScore, computerScore);
   }
 });
+
+replaylbtn.addEventListener("click", () => {
+  window.location.reload();
+});
+
+function startCountdown() {
+
+  if(timerFunc){
+    clearInterval(timerFunc);
+  }
+  
+  timerFunc = setInterval(function () {
+    timeLeft--;
+    countdownElement.textContent = timeLeft;
+
+    if (timeLeft <= 0) {
+      clearInterval(timerFunc);
+      location.reload();
+    }
+  }, 1000);
+
+  return timerFunc;
+}
 
 //displaying winner
 const roundWinDiv = document.createElement("div");
