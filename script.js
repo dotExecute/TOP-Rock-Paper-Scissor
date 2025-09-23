@@ -57,6 +57,8 @@ function finalScore(finalHumanScore, finalComputerScore) {
 
 // 3 buttons and OnClick functionality
 const body = document.querySelector("body");
+const welcomeTxt = document.querySelector("#welcometxt");
+const closeWlcmTxt = document.querySelector("#ok");
 const rockBtn = document.createElement("button");
 const paperBtn = document.createElement("button");
 const scissorBtn = document.createElement("button");
@@ -68,6 +70,28 @@ let btnClckForTimes = 0;
 let timeLeft = 5; // timer count for comp win condition
 let timerFunc = null;
 const totalRounds = 5;
+
+// Welcome text when page loads
+function showWlcmTxt() {
+  window.addEventListener("load", () => {
+    welcomeTxt.showModal();
+  });
+}
+
+closeWlcmTxt.addEventListener("click", () => {
+  welcomeTxt.close();
+});
+
+let sessionVisits = sessionStorage.getItem("sessionVisits");
+
+if (sessionVisits) {
+  sessionVisits = Number(sessionVisits) + 1;
+} else {
+  sessionVisits = 1;
+  showWlcmTxt();
+}
+
+sessionStorage.setItem('sessionVisits', sessionVisits);
 
 rockBtn.textContent = "rock";
 paperBtn.textContent = "paper";
@@ -110,11 +134,10 @@ replaylbtn.addEventListener("click", () => {
 });
 
 function startCountdown() {
-
-  if(timerFunc){
+  if (timerFunc) {
     clearInterval(timerFunc);
   }
-  
+
   timerFunc = setInterval(function () {
     timeLeft--;
     countdownElement.textContent = timeLeft;
