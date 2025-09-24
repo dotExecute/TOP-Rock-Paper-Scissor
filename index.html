@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissor</title>
+    <link rel = "stylesheet" href = "styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -28,5 +29,90 @@
     
     
 
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Game Container -->
+    <div class="game-container">
+        <header class="game-header">
+            <h1>Rock Paper Scissors</h1>
+        </header>
+
+        <!-- Score Display -->
+        <div class="score-section">
+            <div class="score-card">
+                <h3>You</h3>
+                <div class="score" id="human-score">0</div>
+            </div>
+            <div class="vs-divider">VS</div>
+            <div class="score-card">
+                <h3>Computer</h3>
+                <div class="score" id="computer-score">0</div>
+            </div>
+        </div>
+
+        <!-- Round Result -->
+        <div class="round-result" id="round-result">
+            Make a choice!
+        </div>
+
+        <!-- Game Buttons -->
+        <div class="game-buttons">
+            <button class="choice-btn" id="rock-btn" data-choice="rock">
+                <span class="choice-emoji">🪨</span>
+                <span class="choice-text">Rock</span>
+            </button>
+            <button class="choice-btn" id="paper-btn" data-choice="paper">
+                <span class="choice-emoji">📄</span>
+                <span class="choice-text">Paper</span>
+            </button>
+            <button class="choice-btn" id="scissor-btn" data-choice="scissor">
+                <span class="choice-emoji">✂️</span>
+                <span class="choice-text">Scissors</span>
+            </button>
+        </div>
+
+        <!-- Game Info -->
+        <div class="game-info">
+            <p>First to win 3 out of 5 rounds wins!</p>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <dialog class="modal" id="welcome-modal">
+        <div class="modal-content">
+            <h2>Welcome, Traveler!</h2>
+            <p>Would you like to play a game of Rock, Paper, Scissors?</p>
+            <button class="modal-btn" id="start-game-btn">Let's Play!</button>
+        </div>
+    </dialog>
+
+    <dialog class="modal" id="human-win-modal">
+        <div class="modal-content">
+            <h2>Victory!</h2>
+            <p>No! No more games. Finish him off. Finish him now! Gollum, Gollum!</p>
+            <button class="modal-btn" id="replay-btn">Play Again</button>
+        </div>
+    </dialog>
+
+    <dialog class="modal" id="computer-win-modal">
+        <div class="modal-content">
+            <h2>Defeat!</h2>
+            <p>Bagginses lost, now we eats it whole.</p>
+            <div class="countdown-container">
+                <p>Restarting in:</p>
+                <div class="countdown" id="countdown-timer">5</div>
+            </div>
+        </div>
+    </dialog>
 </body>
 </html>
