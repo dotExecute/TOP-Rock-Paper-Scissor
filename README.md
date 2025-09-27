@@ -1,7 +1,5 @@
 # TOP-Rock-Paper-Scissor
 Frist JS project
 
-//TO-Do
--Restart functionality
--Start prompt
--Actual styling
+- Main learning DOM manipulation and core JS
+- Extars : CSS concepts like, positioning, box-shadows, gradients, pseudo elements

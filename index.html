@@ -29,22 +29,22 @@
 
         <!-- Round Result -->
         <div class="round-result" id="round-result">
-            Make a choice   !
+            What's it got in it's nasty little pocketses ?!
         </div>
 
         <!-- Game Buttons -->
         <div class="game-buttons">
             <button class="choice-btn" id="rock-btn" data-choice="rock">
-                <span class="choice-emoji">🪨</span>
-                <span class="choice-text">Rock</span>
+                <img src = "gollum.png" class="choice-emoji" width="100">
+                <span class="choice-text">Gollum</span>
             </button>
             <button class="choice-btn" id="paper-btn" data-choice="paper">
-                <span class="choice-emoji">📄</span>
-                <span class="choice-text">Paper</span>
+                <img src = "thering.png" class="choice-emoji" width="100">
+                <span class="choice-text">Ring</span>
             </button>
             <button class="choice-btn" id="scissor-btn" data-choice="scissor">
-                <span class="choice-emoji">✂️</span>
-                <span class="choice-text">Scissors</span>
+                <img src = "bilbo.png" class="choice-emoji" width="100">
+                <span class="choice-text">Bilbo</span>
             </button>
         </div>
 
@@ -58,7 +58,7 @@
     <dialog class="modal" id="welcome-modal">
         <div class="modal-content">
             <h2>Welcome, Traveler!</h2>
-            <p>Would you like to play a game of Rock, Paper, Scissors?</p>
+            <p>I'm looking for someone to share in an adventure</p>
             <button class="modal-btn" id="start-game-btn">Let's Play!</button>
         </div>
     </dialog>
@@ -67,18 +67,18 @@
         <div class="modal-content">
             <h2>Victory!</h2>
             <p>No! No more games. Finish him off. Finish him now! Gollum, Gollum!</p>
-            <button class="modal-btn" id="replay-btn">Play Again</button>
+            <div class="countdown-container">
+                <p>Restarting in:</p>
+                <div class="countdown" id="countdown-timer">5</div>
+            </div>
         </div>
     </dialog>
 
     <dialog class="modal" id="computer-win-modal">
         <div class="modal-content">
             <h2>Defeat!</h2>
-            <p>Bagginses lost, now we eats it whole.</p>
-            <div class="countdown-container">
-                <p>Restarting in:</p>
-                <div class="countdown" id="countdown-timer">5</div>
-            </div>
+            <p>You lost, now we eats it whole.</p>
+            <button class="modal-btn" id="replay-btn">Play Again</button>
         </div>
     </dialog>
 </body>

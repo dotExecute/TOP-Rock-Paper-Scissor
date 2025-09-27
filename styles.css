@@ -5,10 +5,40 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(45deg, #e1d2f3 0%, #c9b5e6 100%);
+  font-family: "Cinzel", serif;
+  background-image: linear-gradient(
+    135deg,
+    #1a1a2e 0%,
+    #16213e 25%,
+    #0f3460 75%,
+    #533483 100%
+  );
   min-height: 100vh;
-  color: #333;
+  color: #d4af37;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* optional flair just to learn about pseudo elements */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at 20% 80%,
+      rgba(212, 175, 55, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(83, 52, 131, 0.1) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: -1;
 }
 
 .game-container {
@@ -23,23 +53,54 @@ body {
 }
 
 .game-header h1 {
-  font-size: 48px;
+  font-size: 50px;
   font-weight: 900;
-  color: #7d6bb0;
-  text-shadow: 0 3px 4px rgba(125, 107, 176, 0.1);
-  letter-spacing: -2px;
+  color: #d4af37;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5),
+    0 0 20px rgba(212, 175, 55, 0.3), 2px 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.game-header::after {
+  content: "One Game to Rule Them All";
+  display: block;
+  font-size: 14px;
+  color: #8b7355;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 10px;
 }
 
 /* Main section */
 .score-section {
-  background: white;
+  background: linear-gradient(
+    145deg,
+    rgba(26, 26, 46, 0.9) 0%,
+    rgba(22, 33, 62, 0.9) 100%
+  );
+  border: 2px solid #d4af37;
   border-radius: 20px;
   padding: 32px;
   margin-bottom: 32px;
-  box-shadow: 0 10px 30px rgba(125, 107, 176, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(212, 175, 55, 0.2);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+}
+
+.score-section::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #d4af37, #8b7355, #d4af37);
+  border-radius: 22px;
+  z-index: -1;
 }
 
 .score-card {
@@ -48,70 +109,110 @@ body {
 }
 
 .score-card h3 {
-  color: #7d6bb0;
-  font-size: 20px;
+  color: #d4af37;
+  font-size: 24px;
   font-weight: 600;
   margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .score {
   font-size: 72px;
   font-weight: 900;
-  color: #b19cd9;
+  color: #d4af37;
   line-height: 1;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .vs-divider {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
-  color: #9b86cc;
-  padding: 0 20px;
+  color: #8b7355;
+  padding: 0 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .round-result {
   text-align: center;
-  background: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(
+    145deg,
+    rgba(26, 26, 46, 0.8) 0%,
+    rgba(22, 33, 62, 0.8) 100%
+  );
+  border: 1px solid #8b7355;
   border-radius: 16px;
-  padding: 20px;
+  padding: 24px;
   margin-bottom: 32px;
   font-size: 18px;
   font-weight: 500;
-  color: #7d6bb0;
-  box-shadow: 0 4px 12px rgba(125, 107, 176, 0.1);
+  color: #d4af37;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .game-buttons {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  gap: 30px;
   margin-bottom: 32px;
 }
 
 .choice-btn {
-  padding: 24px 20px;
-  background: white;
-  border: 3px solid #c9b5e6;
+  padding: 28px 24px;
+  background: linear-gradient(
+    145deg,
+    rgba(26, 26, 46, 0.9) 0%,
+    rgba(22, 33, 62, 0.9) 100%
+  );
+  border: 2px solid #8b7355;
   border-radius: 16px;
   cursor: pointer;
-  flex: 1;
+  width: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(201, 181, 230, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.choice-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.choice-btn:hover::before {
+  left: 100%;
 }
 
 .choice-btn:hover {
-  transform: translateY(-4px);
-  background: #b19cd9;
-  border-color: #9b86cc;
-  color: white;
-  box-shadow: 0 8px 20px rgba(177, 156, 217, 0.3);
+  transform: translateY(-6px) scale(1.05);
+  border-color: #d4af37;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.3),
+    inset 0 1px 0 rgba(212, 175, 55, 0.3);
 }
 
 .choice-btn:active {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
 }
 
 .choice-emoji {
@@ -121,13 +222,27 @@ body {
 .choice-text {
   font-size: 16px;
   font-weight: 600;
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#rock-btn .choice-text {
+  color: #8b7355;
+}
+#paper-btn .choice-text {
+  color: #d4af37;
+}
+#scissor-btn .choice-text {
+  color: #cd853f;
 }
 
 .game-info {
   text-align: center;
-  color: #7d6bb0;
-  font-size: 14px;
-  opacity: 0.8;
+  color: #8b7355;
+  font-size: 16px;
+  opacity: 0.9;
+  font-style: italic;
 }
 
 /* Modals */
@@ -137,61 +252,122 @@ body {
   border: none;
   border-radius: 20px;
   padding: 0;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 100px rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(8px);
 }
 
 .modal::backdrop {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(4px);
 }
 
 .modal-content {
-  padding: 40px 32px;
+  padding: 48px 40px;
   text-align: center;
-  background: white;
+  background: linear-gradient(
+    145deg,
+    rgba(26, 26, 46, 0.95) 0%,
+    rgba(22, 33, 62, 0.95) 100%
+  );
+  border: 2px solid #d4af37;
   border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-content::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.1) 0%,
+    transparent 70%
+  );
+  animation: rotate 20s linear infinite;
+  z-index: -1;
 }
 
 .modal-content h2 {
-  color: #7d6bb0;
-  font-size: 28px;
+  color: #d4af37;
+  font-size: 32px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .modal-content p {
-  color: #666;
-  font-size: 16px;
+  color: #d4af37;
+  font-size: 18px;
   line-height: 1.6;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  font-style: bold;
+  opacity: 0.9;
 }
 
 .modal-btn {
-  background: linear-gradient(45deg, #b19cd9 0%, #9b86cc 100%);
-  color: white;
-  border: none;
-  padding: 16px 32px;
+  background: linear-gradient(45deg, #d4af37 0%, #8b7355 100%);
+  color: #1a1a2e;
+  border: 2px solid #d4af37;
+  padding: 18px 36px;
   border-radius: 12px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
+  font-family: "Cinzel", serif;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(177, 156, 217, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.modal-btn:hover::before {
+  left: 100%;
 }
 
 .modal-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(177, 156, 217, 0.4);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.5);
 }
 
 .countdown-container {
-  margin-top: 20px;
+  margin-top: 24px;
+}
+
+.countdown-container p {
+  color: #8b7355;
+  font-size: 16px;
+  margin-bottom: 16px;
 }
 
 .countdown {
-  font-size: 48px;
+  font-size: 64px;
   font-weight: 900;
-  color: #b19cd9;
-  margin-top: 12px;
+  color: #d4af37;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.8),
+    0 0 40px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0, 0, 0, 0.8);
+  animation: pulse 1s ease-in-out infinite;
 }

@@ -34,22 +34,22 @@ function playRound(humanChoice, computerChoice) {
   console.log(`Human: ${humanChoice}, Computer: ${computerChoice}`); // Debug info
   
   if (computerChoice === "rock" && humanChoice === "scissor") {
-    roundResultDisplay.textContent = "Computer wins this round! Rock crushes scissors";
+    roundResultDisplay.textContent = "Computer wins this round! Bilbo almost got killed by Golllum";
     computerScore++;
   } else if (computerChoice === "scissor" && humanChoice === "paper") {
-    roundResultDisplay.textContent = "Computer wins this round! Scissors cut paper";
+    roundResultDisplay.textContent = "Computer wins this round! Bilbo resisted the Ring";
     computerScore++;
   } else if (computerChoice === "paper" && humanChoice === "rock") {
-    roundResultDisplay.textContent = "Computer wins this round! Paper covers rock";
+    roundResultDisplay.textContent = "Computer wins this round! Gollum succumbed to the Ring's influence";
     computerScore++;
   } else if (humanChoice === "rock" && computerChoice === "scissor") {
-    roundResultDisplay.textContent = "You win this round! Rock crushes scissors";
+    roundResultDisplay.textContent = "You win this round! Bilbo almost got killed by Golllum";
     humanScore++;
   } else if (humanChoice === "scissor" && computerChoice === "paper") {
-    roundResultDisplay.textContent = "You win this round! Scissors cut paper";
+    roundResultDisplay.textContent = "You win this round! Bilbo resisted the Ring";
     humanScore++;
   } else if (humanChoice === "paper" && computerChoice === "rock") {
-    roundResultDisplay.textContent = "You win this round! Paper covers rock";
+    roundResultDisplay.textContent = "You win this round! Gollum succumbed to the Ring's influence";
     humanScore++;
   } else if (computerChoice === humanChoice) {
     roundResultDisplay.textContent = "It's a tie! Try again";
@@ -78,9 +78,9 @@ function playRound(humanChoice, computerChoice) {
 function finalScore() {
   if (humanScore > computerScore) {
     humanWinModal.showModal();
+    startCountdown();
   } else {
     computerWinModal.showModal();
-    startCountdown();
   }
 }
 
@@ -105,7 +105,7 @@ startGameBtn.addEventListener('click', () => {
 
 replayBtn.addEventListener('click', () => {
   resetGame();
-  humanWinModal.close();
+  computerWinModal.close();
 });
 
 // Reset game function
@@ -139,7 +139,7 @@ function startCountdown() {
 
     if (timeLeft <= 0) {
       clearInterval(timerFunc);
-      computerWinModal.close();
+      humanWinModal.close();
       resetGame();
     }
   }, 1000);
